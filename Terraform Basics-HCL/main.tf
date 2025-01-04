@@ -1,49 +1,48 @@
-#Learning HCL with CloudChamp
+# Local Provider Configuration (No Cloud Provider)
+provider "local" {}
 
-/*
-this
-is 
-a multi line
-comment*/
+# Local resource example: File creation
+resource "local_file" "example" {
+  filename = "example.txt"
+  content  = "This is a sample file created by Terraform."
 
-#Block
-block_type {
-    attribute1 = value1
-    attribute2 = value2
+  # Optional: Set file permissions (you can customize this based on your OS)
+  file_permission = "0644"
 }
 
-resource "aws_instance" "example" {
-  ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.micro" 
-  count = 3
-  enabled = true
+# Local resource example: Directory creation
+resource "local_file" "dir_example" {
+  filename = "example_directory/README.txt"
+  content  = "This is a README file in a directory created by Terraform."
+
+  # Optional: Set file permissions (you can customize this based on your OS)
+  file_permission = "0644"
 }
 
-#Attributes
-key = value
+# Local Variable Example
+locals {
+  my_map = {
+    "name"     = "John Doe"
+    "age"      = 30
+    "is_admin" = true
+  }
 
-#Datatypes
-"string"
-number 2
-boolean true false
-
-
-
-List
-list = ["item1", "item2", "item3]
-
-security_gropus = ["sg-12442", "sg-12321"]
-
-
-Maps
-variable "example_map" {
-    type = map
-    deafult = { key1 = value
+  # Example list of favorite fruits
+  favorite_fruits = ["apple", "banana", "mango"]
 }
 
+# Output: Display age value from local map
+output "age_value" {
+  value = local.my_map["age"]
+}
 
-#Conditions
+# Output: Display greeting message
+output "greeting_message" {
+  value = "Hello ${upper(local.my_map["name"])}! I know you like ${join(", ", local.favorite_fruits)}!"
+}
 
-#Function
-
-#Resourcedependency
+# Local File Resource for Logging (Optional Example)
+resource "local_file" "log_file" {
+  filename = "output.log"
+  content  = "Terraform configuration applied at ${timestamp()}"
+}

@@ -8,11 +8,6 @@
 #always keep your access key and secret access key in key in aws configuure command
 
 
-provider "aws" {
-  # Configuration options
-  region = "us-east-1"
-}
-
 resource "aws_instance" "web" {
   ami           = "ami-0e2c8caa4b6378d8c"  #ubuntu
   instance_type = "t2.micro"
@@ -20,4 +15,12 @@ resource "aws_instance" "web" {
   tags = {
     Name = "HelloWorld"
   }
+}
+
+
+resource "github_repository" "example" {
+  name        = "My_awesome_github_repo"
+  description = "This repo is created using Terraform"
+
+  visibility = "public"
 }

@@ -9,18 +9,29 @@
 
 
 resource "aws_instance" "web" {
-  ami           = "ami-0e2c8caa4b6378d8c"  #ubuntu
-  instance_type = "t2.micro"
+  ami           = "var.os"  #ubuntu
+  instance_type = "var.size"
 
   tags = {
-    Name = "HelloWorld"
+    Name = var.name
   }
 }
 
+#s3 bucket
+resource "aws_s3_bucket" "bucket" {
+  bucket = var.bucketname
+}
 
-resource "github_repository" "example" {
-  name        = "My_awesome_github_repo"
-  description = "This repo is created using Terraform"
+#prod-user
+#staging-user
+resource "aws_iam_user" "myuser" {
+  name = "${var.username}-user"
+}
 
-  visibility = "public"
+output "IPaddress" {
+  value = aws_instance.web.public_ip
+}
+
+output "DNS" {
+  value = aws_instance.web.public_dns
 }

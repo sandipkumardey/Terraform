@@ -18,3 +18,9 @@
 <img width="1357" alt="Screenshot 2025-01-05 at 7 56 15 PM" src="https://github.com/user-attachments/assets/c3fe7bd1-c53b-420f-8d93-b2f8f7a1f77e" />
 
 <img width="1465" alt="Screenshot 2025-01-05 at 7 55 17 PM" src="https://github.com/user-attachments/assets/48054a41-5ce2-4844-8119-5338830fa4e5" />
+
+# Challenge4: Terraform Variables and Outputs
+
+<img width="1239" alt="Screenshot 2025-01-12 at 9 56 19 PM" src="https://github.com/user-attachments/assets/3f4af417-1168-40eb-8a0e-289f33c16d37" />
+
+<img width="1234" alt="Screenshot 2025-01-12 at 9 56 59 PM" src="https://github.com/user-attachments/assets/5f582107-aac2-4112-ba17-3b3359631a70" />
